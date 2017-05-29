@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data.Common;
+using AdoGemeenschap;
 
 namespace AdoWPF
 {
@@ -23,6 +27,47 @@ namespace AdoWPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void buttonBonus_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var manager = new RekeningenManager();
+                labelStatus.Content = manager.SaldoBonus() + " rekeningen aangepast";
+            }
+            catch (Exception ex)
+            {
+                labelStatus.Content = ex.Message;
+            }
+        }
+
+        private void buttonStorten_Click(object sender, RoutedEventArgs e)
+        {
+            Decimal teStorten;
+            if (decimal.TryParse(textBoxTeStorten.Text, out teStorten))
+            {
+                try
+                {
+                    var manager = new RekeningenManager();
+                    if (manager.Storten(teStorten, textBoxRekeningNr.Text))
+                    {
+                        labelStatus.Content = "OK";
+                    }
+                    else
+                    {
+                        labelStatus.Content = "Rekening niet gevonden";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    labelStatus.Content = ex.Message;
+                }
+            }
+            else
+            {
+                labelStatus.Content = "Tik een getal bij het storten";
+            }
         }
     }
 }

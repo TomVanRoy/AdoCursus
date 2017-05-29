@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E1EEB389-6019-49EE-AAE1-168C90E12775}</ProjectGuid>
+    <ProjectGuid>{5195828B-959A-4AF7-8E54-D566DA9AA240}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AdoWPF</RootNamespace>
-    <AssemblyName>AdoWPF</AssemblyName>
+    <RootNamespace>ConnectiesTesten</RootNamespace>
+    <AssemblyName>ConnectiesTesten</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -97,9 +97,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AdoGemeenschap\AdoGemeenschap.csproj">
-      <Project>{9bc6b686-4cfd-45db-b485-45854c106921}</Project>
-      <Name>AdoGemeenschap</Name>
+    <ProjectReference Include="..\ConnectiesTestenGemeenschap\ConnectiesTestenGemeenschap.csproj">
+      <Project>{9aaec306-4b01-4939-b8b0-37ed11809db4}</Project>
+      <Name>ConnectiesTestenGemeenschap</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
