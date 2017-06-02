@@ -10,33 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Configuration;
 using AdoGemeenschap;
 
-namespace ConnectiesTesten
+namespace Taken
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WPFOpgave5.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WPFOpgave05 : Window
     {
-        public MainWindow()
+        public WPFOpgave05()
         {
             InitializeComponent();
         }
 
-        private void buttonBieren_Click(object sender, RoutedEventArgs e)
+        private void buttonBereken_Click(object sender, RoutedEventArgs e)
         {
+            var manager = new TuinleverancierManager();
             try
             {
-                var manager = new TuinleverancierDbManager();
-                using (var connect = manager.GetConnection())
-                {
-                    connect.Open();
-                    labelStatus.Content = "Tuincentrum geopend";
-                }
+                labelStatus.Content = "€ " + manager.BerekenGemiddeldeKostprijs(textBoxSoort.Text).ToString("N");
             }
             catch (Exception ex)
             {

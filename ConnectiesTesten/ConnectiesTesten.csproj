@@ -97,9 +97,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConnectiesTestenGemeenschap\ConnectiesTestenGemeenschap.csproj">
-      <Project>{9aaec306-4b01-4939-b8b0-37ed11809db4}</Project>
-      <Name>ConnectiesTestenGemeenschap</Name>
+    <ProjectReference Include="..\AdoGemeenschap\AdoGemeenschap.csproj">
+      <Project>{9bc6b686-4cfd-45db-b485-45854c106921}</Project>
+      <Name>AdoGemeenschap</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

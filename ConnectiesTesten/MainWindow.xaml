@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConnectiesTesten"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="WPFOpgave2" Height="350" Width="525">
     <Grid>
         <Button x:Name="buttonTest" Content="Test"
                 HorizontalAlignment="Left" VerticalAlignment="Top"

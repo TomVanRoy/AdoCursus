@@ -1,0 +1,30 @@
+﻿<Window x:Class="Taken.WPFOpgave03"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Taken"
+        mc:Ignorable="d"
+        Title="WPFOpgave03" Height="290" Width="245">
+    <Grid>
+        <Label x:Name="LabelPostcode" Content="Postcode:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,72,0,0" />
+        <Label x:Name="LabelNaam" Content="Naam:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,10,0,0" />
+        <Label x:Name="LabelPlaats" Content="Plaats:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,103,0,0" />
+        <Label x:Name="LabelAdres" Content="Adres:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,41,0,0" />
+        <TextBox x:Name="TextBoxNaam" HorizontalAlignment="Left" Height="23" Margin="95,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="TextBoxAdres" HorizontalAlignment="Left" Height="23" Margin="95,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="TextBoxPostcode" HorizontalAlignment="Left" Height="23" Margin="95,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="TextBoxPlaats" HorizontalAlignment="Left" Height="23" Margin="95,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <Button x:Name="ButtonToevoegen" HorizontalAlignment="Left" Margin="12,163,0,0" VerticalAlignment="Top" Width="75" Click="ButtonToevoegen_Click">
+            <TextBlock>
+                <AccessText>_Toevoegen</AccessText>
+            </TextBlock>
+        </Button>
+        <Button x:Name="ButtonEindejaarskorting" HorizontalAlignment="Left" Margin="110,163,0,0" VerticalAlignment="Top" Width="105" Click="ButtonEindejaarskorting_Click">
+            <TextBlock>
+                <AccessText>_Eindejaarskorting</AccessText>
+            </TextBlock>
+        </Button>
+        <Label x:Name="LabelResult" Content="" HorizontalAlignment="Left" Margin="12,195,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="203" />
+    </Grid>
+</Window>

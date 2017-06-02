@@ -10,37 +10,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Configuration;
 using AdoGemeenschap;
 
-namespace ConnectiesTesten
+namespace AdoWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SaldoRekeningRaadplegen.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SaldoRekeningRaadplegen : Window
     {
-        public MainWindow()
+        public SaldoRekeningRaadplegen()
         {
             InitializeComponent();
         }
 
-        private void buttonBieren_Click(object sender, RoutedEventArgs e)
+        private void buttonSaldo_Click(object sender, RoutedEventArgs e)
         {
+            var manager = new RekeningenManager();
             try
             {
-                var manager = new TuinleverancierDbManager();
-                using (var connect = manager.GetConnection())
-                {
-                    connect.Open();
-                    labelStatus.Content = "Tuincentrum geopend";
-                }
+                labelStatus.Content = manager.SaldoRekeningRaadplegen(textBoxRekNr.Text).ToString("N");
             }
             catch (Exception ex)
             {
                 labelStatus.Content = ex.Message;
+                throw;
             }
         }
     }

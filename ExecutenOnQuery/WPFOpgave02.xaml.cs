@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 using System.Configuration;
 using AdoGemeenschap;
 
-namespace ConnectiesTesten
+namespace Taken
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WPFOpgave02 : Window
     {
-        public MainWindow()
+        public WPFOpgave02()
         {
             InitializeComponent();
         }
