@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows;
-using System.Windows.Input;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Transactions;
+using System.Windows.Input;
+using System.Windows;
+using System;
 
 namespace AdoGemeenschap
 {
@@ -66,6 +66,43 @@ namespace AdoGemeenschap
                     return comTuin.ExecuteNonQuery() != 0;
                 }
             }
+        }
+
+        public Int64 ToevoegenReturnInt(string name, string adres, string postcode, string plaats)
+        {
+            TuinleverancierDbManager DbManager = new TuinleverancierDbManager();
+            using (var conTuin = DbManager.GetConnection())
+            {
+                using (var comToevoegen = conTuin.CreateCommand())
+                {
+                    comToevoegen.CommandType = CommandType.StoredProcedure;
+                    comToevoegen.CommandText = "ToevoegenReturnInt";
+
+                    DbParameter parName = comToevoegen.CreateParameter();
+                    parName.ParameterName = "@naam";
+                    parName.Value = name;
+                    comToevoegen.Parameters.Add(parName);
+
+                    DbParameter parAdres = comToevoegen.CreateParameter();
+                    parAdres.ParameterName = "@adres";
+                    parAdres.Value = adres;
+                    comToevoegen.Parameters.Add(parAdres);
+
+                    DbParameter parPostcode = comToevoegen.CreateParameter();
+                    parPostcode.ParameterName = "@postcode";
+                    parPostcode.Value = postcode;
+                    comToevoegen.Parameters.Add(parPostcode);
+
+                    DbParameter parPlaats = comToevoegen.CreateParameter();
+                    parPlaats.ParameterName = "@plaats";
+                    parPlaats.Value = plaats;
+                    comToevoegen.Parameters.Add(parPlaats);
+
+                    conTuin.Open();
+                    Int64 leverancierNr = Convert.ToInt64(comToevoegen.ExecuteScalar());
+                    return leverancierNr;
+                } // using comToevoegen
+            } // using conTuin
         }
 
         public void VervangLeverancier(string oudeLeverancierNr, string nieuweLeverancierNr)

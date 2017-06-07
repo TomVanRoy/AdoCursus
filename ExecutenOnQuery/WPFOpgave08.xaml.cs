@@ -24,5 +24,44 @@ namespace Taken
         {
             InitializeComponent();
         }
+
+        private void FillComboBox()
+        {
+            try
+            {
+                var manager = new PlantenManager();
+                comboBoxSoort.DisplayMemberPath = "SoortNaam";
+                comboBoxSoort.SelectedValuePath = "SoortNr";
+                comboBoxSoort.ItemsSource = manager.GetSoort();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            FillComboBox();
+        }
+
+        private void comboBoxSoort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                listBoxPlanten.Items.Clear();
+                int soortNr = Convert.ToInt32(comboBoxSoort.SelectedValue);
+                var manager = new PlantenManager();
+                var allePlanten = manager.GetPlantenBySoort(soortNr);
+                foreach (var plant in allePlanten)
+                {
+                    listBoxPlanten.Items.Add(plant);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

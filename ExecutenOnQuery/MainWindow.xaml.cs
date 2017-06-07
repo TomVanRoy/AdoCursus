@@ -24,58 +24,58 @@ namespace Taken
             InitializeComponent();
         }
 
-        private void buttonOpgave2_Click(object sender, RoutedEventArgs e)
+        private void buttonOpgave02_Click(object sender, RoutedEventArgs e)
         {
-            WPFOpgave2 newWindow = new WPFOpgave2();
+            WPFOpgave02 newWindow = new WPFOpgave02();
             newWindow.Show();
             this.Close();
         }
 
-        private void buttonOpgave3_Click(object sender, RoutedEventArgs e)
+        private void buttonOpgave03_Click(object sender, RoutedEventArgs e)
         {
-            WPFOpgave3 newWindow = new WPFOpgave3();
+            WPFOpgave03 newWindow = new WPFOpgave03();
             newWindow.Show();
             this.Close();
         }
 
-        private void buttonOpgave4_Click(object sender, RoutedEventArgs e)
+        private void buttonOpgave04_Click(object sender, RoutedEventArgs e)
         {
-            WPFOpgave4 newWindow = new WPFOpgave4();
+            WPFOpgave04 newWindow = new WPFOpgave04();
             newWindow.Show();
             this.Close();
         }
 
-        private void buttonOpgave5_Click(object sender, RoutedEventArgs e)
+        private void buttonOpgave05_Click(object sender, RoutedEventArgs e)
         {
-            WPFOpgave5 newWindow = new WPFOpgave5();
+            WPFOpgave05 newWindow = new WPFOpgave05();
             newWindow.Show();
             this.Close();
         }
 
-        private void buttonOpgave6_Click(object sender, RoutedEventArgs e)
+        private void buttonOpgave06_Click(object sender, RoutedEventArgs e)
         {
-            WPFOpgave6 newWindow = new WPFOpgave6();
+            WPFOpgave06 newWindow = new WPFOpgave06();
             newWindow.Show();
             this.Close();
         }
 
-        private void buttonOpgave7_Click(object sender, RoutedEventArgs e)
+        private void buttonOpgave07_Click(object sender, RoutedEventArgs e)
         {
-            WPFOpgave7 newWindow = new WPFOpgave7();
+            WPFOpgave07 newWindow = new WPFOpgave07();
             newWindow.Show();
             this.Close();
         }
 
-        private void buttonOpgave8_Click(object sender, RoutedEventArgs e)
+        private void buttonOpgave08_Click(object sender, RoutedEventArgs e)
         {
-            WPFOpgave8 newWindow = new WPFOpgave8();
+            WPFOpgave08 newWindow = new WPFOpgave08();
             newWindow.Show();
             this.Close();
         }
 
-        private void buttonOpgave9_Click(object sender, RoutedEventArgs e)
+        private void buttonOpgave09_Click(object sender, RoutedEventArgs e)
         {
-            WPFOpgave9 newWindow = new WPFOpgave9();
+            WPFOpgave09 newWindow = new WPFOpgave09();
             newWindow.Show();
             this.Close();
         }

@@ -63,5 +63,12 @@ namespace AdoWPF
             newWindow.Show();
             this.Close();
         }
+
+        private void buttonOverzichtBrouwers_Click(object sender, RoutedEventArgs e)
+        {
+            OverzichtBrouwers newWindow = new OverzichtBrouwers();
+            newWindow.Show();
+            this.Close();
+        }
     }
 }

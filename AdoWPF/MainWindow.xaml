@@ -5,12 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdoWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="240">
+        Title="MainWindow" Height="300" Width="400">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="10, 5" />
+            <Setter Property="Width" Value="auto" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Button x:Name="buttonRekeningenAanpassen" Content="Rekeningen aanpassen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Width="auto" Padding="5" Click="buttonRekeningenAanpassen_Click" />
-        <Button x:Name="buttonStorten" Content="Storten" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, 43" Width="auto" Padding="5" Click="buttonStorten_Click" />
-        <Button x:Name="buttonOverschrijven" Content="Overschrijven" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,76" Width="auto" Padding="5" Click="buttonOverschrijven_Click" />
-        <Button x:Name="buttonSaldoRekeningRaadplegen" Content="Saldo Rekening Raadplegen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,109" Width="auto" Padding="5" Click="buttonSaldoRekeningRaadplegen_Click" />
-        <Button x:Name="buttonRekeningInfoRaadplegen" Content="Rekening Info Raadplegen" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,142,0,0"  Width="auto" Padding="5" Click="buttonRekeningInfoRaadplegen_Click" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Button x:Name="buttonRekeningenAanpassen" Grid.Row="0" Content="Rekeningen aanpassen" Click="buttonRekeningenAanpassen_Click" />
+        <Button x:Name="buttonStorten" Grid.Row="1" Content="Storten" Click="buttonStorten_Click" />
+        <Button x:Name="buttonOverschrijven" Grid.Row="2" Content="Overschrijven" Click="buttonOverschrijven_Click" />
+        <Button x:Name="buttonSaldoRekeningRaadplegen" Grid.Row="3" Content="Saldo Rekening Raadplegen" Click="buttonSaldoRekeningRaadplegen_Click" />
+        <Button x:Name="buttonRekeningInfoRaadplegen" Grid.Row="4" Content="Rekening Info Raadplegen" Click="buttonRekeningInfoRaadplegen_Click" />
+        <Button x:Name="buttonOverzichtBrouwers" Grid.Row="5" Content="Overzicht Brouwers" Click="buttonOverzichtBrouwers_Click" />
     </Grid>
 </Window>

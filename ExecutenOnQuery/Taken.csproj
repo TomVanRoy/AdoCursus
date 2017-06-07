@@ -61,6 +61,9 @@
     <Compile Include="UserInput.xaml.cs">
       <DependentUpon>UserInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPFOpgave07.xaml.cs">
+      <DependentUpon>WPFOpgave07.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WPFOpgave10.xaml.cs">
       <DependentUpon>WPFOpgave10.xaml</DependentUpon>
     </Compile>
@@ -76,9 +79,6 @@
     <Compile Include="WPFOpgave06.xaml.cs">
       <DependentUpon>WPFOpgave06.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFOpgave07.xaml.cs">
-      <DependentUpon>WPFOpgave07.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WPFOpgave08.xaml.cs">
       <DependentUpon>WPFOpgave08.xaml</DependentUpon>
     </Compile>
@@ -92,6 +92,10 @@
     <Page Include="UserInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFOpgave07.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WPFOpgave10.xaml">
       <SubType>Designer</SubType>
@@ -132,10 +136,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPFOpgave07.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="WPFOpgave08.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +163,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\AdoGemeenschap.Plant.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -180,6 +181,7 @@
       <Name>AdoGemeenschap</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
