@@ -9,23 +9,75 @@
         Title="OverzichtBrouwers" SizeToContent="Width" Height="500" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="brouwerViewSource" d:DesignSource="{d:DesignInstance {x:Type AdoGemeenschap:Brouwer}, CreateList=True}" />
+        <Style TargetType="Button">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Background" Value="BlanchedAlmond" />
+            <Setter Property="Width" Value="auto" />
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="Background" Value="SkyBlue" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
     </Window.Resources>
     <DockPanel LastChildFill="True">
-        <Border Height="30" Background="SkyBlue" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top">
+        <Border Height="30" DockPanel.Dock="Top">
             <StackPanel HorizontalAlignment="Left" Margin="0" Width="410" Orientation="Horizontal">
+                <Button Content="|&lt;&lt;" IsEnabled="False" Name="buttonGoToFirst" Click="buttonGoToFirst_Click" />
+                <Button Content="|&lt;" IsEnabled="False" Name="buttonGoToPrevious" Click="buttonGoToPrevious_Click" />
+                <Button Content="&gt;|" Name="buttonGoToNext" Click="buttonGoToNext_Click" />
+                <Button Content="&gt;&gt;|" x:Name="buttonGoToLast" Click="buttonGoToLast_Click" />
+                <TextBox Name="textBoxGo" Width="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                <Label Content="van " Height="28" Name="label1" Width="30" />
+                <Label Height="28" Name="labelTotalRowCount" Width="38" />
+                <Button Name="buttonGo" Content="Go!" Click="buttonGo_Click" />
                 <TextBox AcceptsReturn="False" HorizontalAlignment="Left" VerticalContentAlignment="Center" Name="textBoxZoeken" Width="120" KeyUp="textBoxZoeken_KeyUp" />
-                <Button Content="Zoeken" HorizontalAlignment="Left" Name="buttonZoeken" Width="auto" Background="BlanchedAlmond" FontWeight="Bold" Height="28" VerticalAlignment="Top" Click="buttonZoeken_Click" />
+                <Button Content="Zoeken" HorizontalAlignment="Left" Name="buttonZoeken" Height="28" VerticalAlignment="Top" Click="buttonZoeken_Click" />
             </StackPanel>
         </Border>
-        <Border DataContext="{StaticResource brouwerViewSource}" Background="SkyBlue" BorderBrush="Black" BorderThickness="1">
-            <DataGrid x:Name="brouwerDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False">
+        <Border Height="120" DockPanel.Dock="Bottom" DataContext="{StaticResource brouwerViewSource}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="4" Height="120">
+                <ListBox Height="100" HorizontalAlignment="Left" Margin="0" Name="listBoxBrouwers" VerticalAlignment="Top" Width="120" ItemsSource="{Binding}" DisplayMemberPath="BrNaam" />
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="4" Height="120">
+                <Grid x:Name="grid1" DataContext="{StaticResource brouwerViewSource}" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Brouwers Nr:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center" />
+                    <Label x:Name="brouwersNrTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Content="{Binding BrouwersNr, Mode=OneWay}" VerticalAlignment="Center" Width="120" />
+                    <Label Content="Br Naam:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center" />
+                    <TextBox x:Name="brNaamTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BrNaam, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="120" />
+                    <Label Content="Adres:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" />
+                    <TextBox x:Name="adresTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Adres, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="120" />
+                    <Label Content="Postcode:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" />
+                    <TextBox x:Name="postcodeTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Postcode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="120" />
+                    <Label Content="Gemeente:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" />
+                    <TextBox x:Name="gemeenteTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Gemeente, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="120" />
+                    <Label Content="Omzet:" Grid.Column="2" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" />
+                    <TextBox x:Name="omzetTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding Omzet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="120" />
+                </Grid>
+            </StackPanel>
+        </Border>
+        <Border DataContext="{StaticResource brouwerViewSource}">
+            <DataGrid x:Name="brouwerDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" SelectionChanged="brouwerDataGrid_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="brouwersNrColumn" Width="SizeToHeader" IsReadOnly="True" Header="Brouwers Nr" Binding="{Binding BrouwersNr}" />
-                    <DataGridTextColumn x:Name="brNaamColumn" Width="SizeToHeader" Header="Br Naam" Binding="{Binding BrNaam}" />
-                    <DataGridTextColumn x:Name="adresColumn" Width="SizeToHeader" Header="Adres" Binding="{Binding Adres}" />
-                    <DataGridTextColumn x:Name="postcodeColumn" Width="SizeToHeader" Header="Postcode" Binding="{Binding Postcode}" />
-                    <DataGridTextColumn x:Name="gemeenteColumn" Width="SizeToHeader" Header="Gemeente" Binding="{Binding Gemeente}" />
-                    <DataGridTextColumn x:Name="omzetColumn" Width="SizeToHeader" Header="Omzet" Binding="{Binding Omzet}" />
+                    <DataGridTextColumn x:Name="brouwersNrColumn" Width="SizeToHeader" IsReadOnly="True" Header="Brouwers Nr" Binding="{Binding BrouwersNr, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn x:Name="brNaamColumn" Width="SizeToHeader" Header="Br Naam" Binding="{Binding BrNaam, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn x:Name="adresColumn" Width="SizeToHeader" Header="Adres" Binding="{Binding Adres, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn x:Name="postcodeColumn" Width="SizeToHeader" Header="Postcode" Binding="{Binding Postcode, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn x:Name="gemeenteColumn" Width="SizeToHeader" Header="Gemeente" Binding="{Binding Gemeente, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn x:Name="omzetColumn" Width="SizeToHeader" Header="Omzet" Binding="{Binding Omzet, UpdateSourceTrigger=PropertyChanged}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
