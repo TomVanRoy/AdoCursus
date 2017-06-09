@@ -12,18 +12,18 @@ namespace AdoGemeenschap
 {
     public class Brouwer
     {
+        private Int16 postcodeValue;
+        private Int32 brouwerNrValue;
+        private Int32? omzetValue;
         private string adresValue;
         private string brNaamValue;
-        private Int32 brouwersNrValue;
         private string gemeenteValue;
-        private Int32? omzetValue;
-        private Int16 postcodeValue;
 
         public Brouwer(Int32 brNr, string brNaam, string adres, Int16 postcode, string gemeente, Int32? omzet)
         {
             Adres = adres;
             BrNaam = brNaam;
-            brouwersNrValue = brNr;
+            brouwerNrValue = brNr;
             Gemeente = gemeente;
             Omzet = omzet;
             Postcode = postcode;
@@ -41,9 +41,9 @@ namespace AdoGemeenschap
             set { brNaamValue = value; }
         }
 
-        public Int32 BrouwersNr
+        public Int32 BrouwerNr
         {
-            get { return brouwersNrValue; }
+            get { return brouwerNrValue; }
         }
 
         public string Gemeente
@@ -71,17 +71,7 @@ namespace AdoGemeenschap
         public Int16 Postcode
         {
             get { return postcodeValue; }
-            set
-            {
-                if (value < 1000 || value > 9999)
-                {
-                    throw new Exception("Postcode moet tussen 1000 en 9999 liggen");
-                }
-                else
-                {
-                    postcodeValue = value;
-                }
-            }
+            set { postcodeValue = value; }
         }
     }
 }

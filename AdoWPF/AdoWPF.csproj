@@ -56,9 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IngevuldGroterDanNul.cs" />
     <Compile Include="OverzichtBrouwers.xaml.cs">
       <DependentUpon>OverzichtBrouwers.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PostcodeRangeRule0.cs" />
+    <Compile Include="PostcodeRangeRule.cs" />
     <Compile Include="RekeningenAanpassen.xaml.cs">
       <DependentUpon>RekeningenAanpassen.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,9 @@
       <Project>{9bc6b686-4cfd-45db-b485-45854c106921}</Project>
       <Name>AdoGemeenschap</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SaveHL.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
