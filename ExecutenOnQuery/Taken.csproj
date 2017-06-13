@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GetalGroterDanNul.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -64,6 +65,10 @@
     <Compile Include="WPFOpgave07.xaml.cs">
       <DependentUpon>WPFOpgave07.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPFOpgave09.xaml.cs">
+      <DependentUpon>WPFOpgave09.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VeldMoetIngevuldZijn.cs" />
     <Compile Include="WPFOpgave10.xaml.cs">
       <DependentUpon>WPFOpgave10.xaml</DependentUpon>
     </Compile>
@@ -82,9 +87,6 @@
     <Compile Include="WPFOpgave08.xaml.cs">
       <DependentUpon>WPFOpgave08.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFOpgave09.xaml.cs">
-      <DependentUpon>WPFOpgave09.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WPFOpgave07.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFOpgave09.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -140,10 +146,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPFOpgave09.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -163,6 +165,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\AdoGemeenschap.Leverancier.datasource" />
     <None Include="Properties\DataSources\AdoGemeenschap.Plant.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -31,7 +31,7 @@ namespace Taken
         {
             try
             {
-                var manager = new TuinleverancierDbManager();
+                var manager = new TuinDbManager();
                 using (var connect = manager.GetConnection())
                 {
                     connect.Open();

@@ -42,11 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LeverancierManager.cs" />
+    <Compile Include="Leverancier.cs" />
     <Compile Include="Plant.cs" />
     <Compile Include="Brouwer.cs" />
     <Compile Include="BrouwerManager.cs" />
     <Compile Include="DbManager.cs" />
-    <Compile Include="PlantenManager.cs" />
+    <Compile Include="TuinManager.cs" />
     <Compile Include="RekeningInfo.cs" />
     <Compile Include="Soort.cs" />
     <Compile Include="TuinleverancierManager.cs" />

@@ -29,10 +29,10 @@ namespace Taken
         {
             try
             {
-                var manager = new PlantenManager();
+                var manager = new TuinManager();
                 comboBoxSoort.DisplayMemberPath = "SoortNaam";
                 comboBoxSoort.SelectedValuePath = "SoortNr";
-                comboBoxSoort.ItemsSource = manager.GetSoort();
+                comboBoxSoort.ItemsSource = manager.GetSoorten();
             }
             catch (Exception ex)
             {
@@ -51,8 +51,8 @@ namespace Taken
             {
                 listBoxPlanten.Items.Clear();
                 int soortNr = Convert.ToInt32(comboBoxSoort.SelectedValue);
-                var manager = new PlantenManager();
-                var allePlanten = manager.GetPlantenBySoort(soortNr);
+                var manager = new TuinManager();
+                var allePlanten = manager.GetPlanten(soortNr);
                 foreach (var plant in allePlanten)
                 {
                     listBoxPlanten.Items.Add(plant);

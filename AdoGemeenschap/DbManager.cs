@@ -50,7 +50,7 @@ namespace AdoGemeenschap
         }
     }
 
-    public class TuinleverancierDbManager
+    public class TuinDbManager
     {
         private static ConnectionStringSettings conSetting = ConfigurationManager.ConnectionStrings["Tuincentrum"];
         private static DbProviderFactory factory = DbProviderFactories.GetFactory(conSetting.ProviderName);

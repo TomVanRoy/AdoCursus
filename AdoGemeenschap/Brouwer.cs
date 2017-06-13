@@ -12,12 +12,14 @@ namespace AdoGemeenschap
 {
     public class Brouwer
     {
-        private Int16 postcodeValue;
-        private Int32 brouwerNrValue;
-        private Int32? omzetValue;
         private string adresValue;
         private string brNaamValue;
+        private Int32 brouwerNrValue;
         private string gemeenteValue;
+        private Int32? omzetValue;
+        private Int16 postcodeValue;
+
+        public Brouwer() { }
 
         public Brouwer(Int32 brNr, string brNaam, string adres, Int16 postcode, string gemeente, Int32? omzet)
         {
@@ -27,18 +29,27 @@ namespace AdoGemeenschap
             Gemeente = gemeente;
             Omzet = omzet;
             Postcode = postcode;
+            Changed = false;
         }
 
         public string Adres
         {
             get { return adresValue; }
-            set { adresValue = value; }
+            set
+            {
+                adresValue = value;
+                Changed = true;
+            }
         }
 
         public string BrNaam
         {
             get { return brNaamValue; }
-            set { brNaamValue = value; }
+            set
+            {
+                brNaamValue = value;
+                Changed = true;
+            }
         }
 
         public Int32 BrouwerNr
@@ -46,10 +57,15 @@ namespace AdoGemeenschap
             get { return brouwerNrValue; }
         }
 
+        public bool Changed { get; set; }
         public string Gemeente
         {
             get { return gemeenteValue; }
-            set { gemeenteValue = value; }
+            set
+            {
+                gemeenteValue = value;
+                Changed = true;
+            }
         }
 
         public Int32? Omzet
@@ -64,6 +80,7 @@ namespace AdoGemeenschap
                 else
                 {
                     omzetValue = value;
+                    Changed = true;
                 }
             }
         }
@@ -71,7 +88,11 @@ namespace AdoGemeenschap
         public Int16 Postcode
         {
             get { return postcodeValue; }
-            set { postcodeValue = value; }
+            set
+            {
+                postcodeValue = value;
+                Changed = true;
+            }
         }
     }
 }

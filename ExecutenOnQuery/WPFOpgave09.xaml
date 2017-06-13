@@ -1,11 +1,101 @@
-﻿<Window x:Class="Taken.WPFOpgave09"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taken"
+        xmlns:glob="clr-namespace:System.Globalization;assembly=mscorlib"
+        xmlns:AdoGemeenschap="clr-namespace:AdoGemeenschap;assembly=AdoGemeenschap" x:Class="Taken.WPFOpgave09"
         mc:Ignorable="d"
-        Title="WPFOpgave09" Height="300" Width="300">
-    <Grid>
+        Title="WPFOpgave09" Height="430" Width="430" MinHeight="330" MinWidth="330" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <EventSetter Event="PreviewKeyDown" Handler="All_PreviewKeyDown" />
+            <EventSetter Event="PreviewMouseDown" Handler="All_PreviewMouseDown" />
+            <Setter Property="Height" Value="23" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Width" Value="80" />
+        </Style>
+        <Style TargetType="ListBox">
+            <EventSetter Event="PreviewMouseDown" Handler="All_PreviewMouseDown" />
+            <EventSetter Event="PreviewKeyDown" Handler="All_PreviewKeyDown" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Width" Value="100" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Width" Value="100" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <EventSetter Event="PreviewKeyDown" Handler="All_PreviewKeyDown" />
+            <EventSetter Event="PreviewMouseDown" Handler="All_PreviewMouseDown" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Button">
+            <EventSetter Event="PreviewMouseDown" Handler="All_PreviewMouseDown" />
+            <EventSetter Event="PreviewKeyDown" Handler="All_PreviewKeyDown" />
+        </Style>
+        <CollectionViewSource x:Key="plantViewSource" d:DesignSource="{d:DesignInstance {x:Type AdoGemeenschap:Plant}, CreateList=True}" />
+        <ControlTemplate x:Key="validationTemplate">
+            <StackPanel Orientation="Vertical">
+                <AdornedElementPlaceholder />
+                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red" />
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+        <Label x:Name="labelSoort" Content="Kies een soort:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <ComboBox x:Name="comboBoxSoort" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" SelectionChanged="comboBoxSoort_SelectionChanged" DisplayMemberPath="SoortNr" ItemsSource="{Binding}" />
+        <ListBox x:Name="listBoxPlanten" DisplayMemberPath="PlantNaam" Grid.Row="1" />
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="20" DataContext="{Binding ElementName=listBoxPlanten, Path=SelectedItem}">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label x:Name="labelPlantnummer" Content="Plantnummer:" Grid.Column="1" Grid.Row="1" />
+                <TextBox x:Name="textBoxPlantnummer" Grid.Column="2" Grid.Row="1" IsReadOnly="True" Text="{Binding PlantNr, Mode=OneWay}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label x:Name="labelLeverancier" Content="Leverancier:" Grid.Column="1" Grid.Row="2" />
+                <TextBox x:Name="textBoxLevnr" Grid.Column="3" Grid.Row="2" IsReadOnly="True" Text="{Binding LevNr, Mode=OneWay}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label x:Name="labelKleur" Content="Kleur:" Grid.Column="1" Grid.Row="3" />
+                <TextBox x:Name="textBoxKleur" Grid.Column="3" Grid.Row="3" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+                    <TextBox.Text>
+                        <Binding Path="Kleur" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <local:VeldMoetIngevuldZijn />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label x:Name="labelPrijs" Content="Prijs:" Grid.Column="1" Grid.Row="4" />
+                <TextBox x:Name="textBoxPrijs" Grid.Column="3" Grid.Row="4" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+                    <TextBox.Text>
+                        <Binding Path="VerkoopPrijs" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" NotifyOnValidationError="True" ConverterCulture="{x:Static glob:CultureInfo.CurrentCulture}" StringFormat="c">
+                            <Binding.ValidationRules>
+                                <local:GetalGroterDanNul />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="buttonOpslaan" Content="Opslaan" Grid.Row="5" Grid.ColumnSpan="3" MaxHeight="40" Margin="10" Click="buttonOpslaan_Click" />
     </Grid>
 </Window>

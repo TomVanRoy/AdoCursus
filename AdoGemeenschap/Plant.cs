@@ -12,14 +12,14 @@ namespace AdoGemeenschap
 {
     public class Plant
     {
-        private decimal verkoopPrijsValue;
-        private Int16 levNrValue;
-        private Int16 soortNrValue;
-        private Int32 plantNrValue;
         private string kleurValue;
+        private Int32 levNrValue;
         private string plantNaamValue;
+        private Int32 plantNrValue;
+        private Int32 soortNrValue;
+        private decimal verkoopPrijsValue;
 
-        public Plant(Int32 plantNr, string plantNaam, Int16 soortNr, Int16 levNr, string kleur, decimal verkoopPrijs)
+        public Plant(Int32 plantNr, string plantNaam, Int32 soortNr, Int32 levNr, string kleur, decimal verkoopPrijs)
         {
             Kleur = kleur;
             LevNr = levNr;
@@ -27,18 +27,39 @@ namespace AdoGemeenschap
             plantNrValue = plantNr;
             SoortNr = soortNr;
             VerkoopPrijs = verkoopPrijs;
+            Changed = false;
+        }
+
+        public bool Changed { get; set; }
+
+        public string Kleur
+        {
+            get { return kleurValue; }
+            set
+            {
+                kleurValue = value;
+                Changed = true;
+            }
+        }
+
+        public Int32 LevNr
+        {
+            get { return levNrValue; }
+            set
+            {
+                levNrValue = value;
+                Changed = true;
+            }
         }
 
         public string PlantNaam
         {
             get { return plantNaamValue; }
-            set { plantNaamValue = value; }
-        }
-
-        public string Kleur
-        {
-            get { return kleurValue; }
-            set { kleurValue = value; }
+            set
+            {
+                plantNaamValue = value;
+                Changed = true;
+            }
         }
 
         public Int32 PlantNr
@@ -46,10 +67,14 @@ namespace AdoGemeenschap
             get { return plantNrValue; }
         }
 
-        public Int16 SoortNr
+        public Int32 SoortNr
         {
             get { return soortNrValue; }
-            set { soortNrValue = value; }
+            set
+            {
+                soortNrValue = value;
+                Changed = true;
+            }
         }
 
         public decimal VerkoopPrijs
@@ -64,14 +89,9 @@ namespace AdoGemeenschap
                 else
                 {
                     verkoopPrijsValue = value;
+                    Changed = true;
                 }
             }
-        }
-
-        public Int16 LevNr
-        {
-            get { return levNrValue; }
-            set { levNrValue = value; }
         }
     }
 }

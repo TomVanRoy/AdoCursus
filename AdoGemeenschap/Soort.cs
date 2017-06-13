@@ -16,5 +16,10 @@ namespace AdoGemeenschap
             SoortNaam = soortNaam;
             SoortNr = soortNr;
         }
+
+        public override string ToString()
+        {
+            return SoortNaam;
+        }
     }
 }

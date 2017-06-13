@@ -18,7 +18,7 @@ namespace AdoGemeenschap
     {
         public Int32 Eindejaarskorting()
         {
-            TuinleverancierDbManager dbManager = new TuinleverancierDbManager();
+            TuinDbManager dbManager = new TuinDbManager();
             using (var conTuin = dbManager.GetConnection())
             {
                 using (var comEindejaarskorting = conTuin.CreateCommand())
@@ -34,7 +34,7 @@ namespace AdoGemeenschap
 
         public bool Toevoegen(string name, string adres, string postcode, string plaats)
         {
-            TuinleverancierDbManager DbManager = new TuinleverancierDbManager();
+            TuinDbManager DbManager = new TuinDbManager();
             using (var conTuin = DbManager.GetConnection())
             {
                 using (var comTuin = conTuin.CreateCommand())
@@ -70,7 +70,7 @@ namespace AdoGemeenschap
 
         public Int64 ToevoegenReturnInt(string name, string adres, string postcode, string plaats)
         {
-            TuinleverancierDbManager DbManager = new TuinleverancierDbManager();
+            TuinDbManager DbManager = new TuinDbManager();
             using (var conTuin = DbManager.GetConnection())
             {
                 using (var comToevoegen = conTuin.CreateCommand())
@@ -107,7 +107,7 @@ namespace AdoGemeenschap
 
         public void VervangLeverancier(string oudeLeverancierNr, string nieuweLeverancierNr)
         {
-            var DbManager = new TuinleverancierDbManager();
+            var DbManager = new TuinDbManager();
 
             var opties = new TransactionOptions();
             opties.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
@@ -158,7 +158,7 @@ namespace AdoGemeenschap
 
         public decimal BerekenGemiddeldeKostprijs(string soort)
         {
-            var dbManager = new TuinleverancierDbManager();
+            var dbManager = new TuinDbManager();
             using (var conTuin = dbManager.GetConnection())
             {
                 using (var comGemPrijs = conTuin.CreateCommand())
