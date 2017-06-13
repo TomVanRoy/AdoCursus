@@ -82,13 +82,28 @@ namespace Taken
         private void VulComboBox()
         {
             var nummers = (from b in leverancierOb orderby b.PostNr select b.PostNr.ToString()).Distinct().ToList();
-            nummers.Insert(0, "");
+            nummers.Insert(0, "alles");
             comboBoxPostNummer.ItemsSource = nummers;
             comboBoxPostNummer.SelectedIndex = 0;
         }
 
         private void comboBoxPostNummer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (comboBoxPostNummer.SelectedIndex != 0)
+            {
+                leverancierDataGrid.Items.Filter = new Predicate<object>(PostnummerFilter);
+            }
+            else
+            {
+                leverancierDataGrid.Items.Filter = null;
+            }
+        }
+
+        public bool PostnummerFilter(object lev)
+        {
+            Leverancier l = lev as Leverancier;
+            bool result = (l.PostNr == comboBoxPostNummer.SelectedValue.ToString());
+            return result;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -154,8 +169,10 @@ namespace Taken
                     }
                     gelukt.AppendLine(gewijzigdeLeveranciers.Count - resultaatLeveranciers.Count + " leverancier(s) gewijzigd in de database");
                 }
-
-                MessageBox.Show(gelukt.ToString() + (gefaald.ToString() != string.Empty ? "\n\n" + gefaald.ToString() : ""), "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
+                if ((gelukt.ToString() != string.Empty) || (gefaald.ToString() != string.Empty))
+                {
+                    MessageBox.Show(gelukt.ToString() + (gefaald.ToString() != string.Empty ? "\n\n" : "") + gefaald.ToString(), "Info", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
+                }
                 oudeLeveranciers.Clear();
                 nieuweLeveranciers.Clear();
                 gewijzigdeLeveranciers.Clear();
